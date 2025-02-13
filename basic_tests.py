@@ -1,9 +1,7 @@
 from selene  import browser, command
 import os
-browser.config.base_url = 'https://demoqa.com/automation-practice-form'
-
 def test_full_complited_form():
-    browser.open("/")
+    browser.open("/automation-practice-form")
     browser.element("#firstName").type("Ivan")
     browser.element("#lastName").type("Ivanovich")
     browser.element("#userEmail").type("Ivanovich@testmail.com")
@@ -18,8 +16,8 @@ def test_full_complited_form():
     browser.element("#hobbies-checkbox-2").perform(command.js.click())
     browser.element("#uploadPicture").send_keys(os.path.abspath("images.png"))
     browser.element("#currentAddress").type("Test adress, 11/1")
-    # browser.element("#state").click().send_keys("N").press_enter()
-    # browser.element("#city").click().type("D").press_enter()
+    browser.element("#state").click().element("#react-select-3-option-2").click()
+    browser.element("#city").click().element("#react-select-4-option-1").click()
     browser.element("#submit").click()
 
 
