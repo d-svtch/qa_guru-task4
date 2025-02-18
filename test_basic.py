@@ -1,6 +1,6 @@
 from selene import browser, command, have, command
 import os
-
+from selene.core import match
 
 
 def test_full_complited_form():
@@ -48,4 +48,5 @@ def test_required_data_not_filled():
     browser.element("#submit").perform(command.js.scroll_into_view).click()
 
     browser.element('#example-modal-sizes-title-lg').should(have.no.exact_text('Thanks for submitting the form'))
+    # browser.element("#lastName").perform(command.js.scroll_into_view).should(have.attribute('class').value('form-control:invalid'))
     browser.element('#userForm').should(have.attribute('class').value('was-validated'))
